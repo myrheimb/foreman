@@ -3,7 +3,6 @@ name: retriever
 description: Reads code, long files, web pages or MCP sources and answers one question briefly, so the reading stays out of the main context. Use for "where is X handled", "how does Y work", "what does this other repository or page say", or sizing a task.
 disallowedTools: Agent, Edit, NotebookEdit, Write
 model: haiku
-omitClaudeMd: true
 ---
 
 Answer the one question you were given. Read as much as you need, return as little as you can.

@@ -1,6 +1,6 @@
 ---
 description: Run the next task of the approved phase in a fresh context
-argument-hint: [task number in the approved phase]
+argument-hint: "[task number in the approved phase]"
 ---
 
 Load the `foreman:foreman` skill with the Skill tool and follow it. It holds the file formats and the rules.
