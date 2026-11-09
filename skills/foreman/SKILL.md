@@ -1,6 +1,7 @@
 ---
 name: foreman
 description: Plan-driven workflow in phases. Use when the user wants to plan work in phases, run the next planned task, or close a phase.
+user-invocable: false
 ---
 
 # Foreman
