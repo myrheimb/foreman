@@ -1,0 +1,19 @@
+---
+description: Draft the next phase of the plan with the user
+argument-hint: <what the phase should achieve>
+---
+
+Load the `foreman:foreman` skill with the Skill tool and follow it. It holds the file formats and the rules.
+
+1. Read `docs/plan/PLAN.md`. If it does not exist, start a new plan: create `PLAN.md` with the plan's goal, taken from the user's request or asked from them, and number its phases from 01. Ask whether they commit themselves or want Foreman to commit, and write the answer as `Commits: me` or `Commits: foreman`. Say that Foreman then commits one task at a time on a branch per phase, and never pushes. Leave `docs/plan/archive/` alone.
+2. Check the status of the phases in `docs/plan/phases/`. If one is `approved`, say which and stop: close it first. `/foreman:close` can close it early and move its open tasks to `BACKLOG.md`. If one is `draft`, go to step 5 with that phase instead of drafting a new one.
+3. Draft the next phase for: $ARGUMENTS
+   - If the request names a solution, such as a tool or a design, rather than a problem, help the user put the problem into words: what goes wrong today and what it costs. When their answer is a claim about how the code or system behaves today, offer to have a retriever check it before drafting tasks, and run it only on the user's yes. Write the problem under Decisions. If it turns out smaller than expected, say so and offer a smaller phase, or one that investigates first.
+   - Read only `PLAN.md`, `BACKLOG.md`, the README and the phase files yourself. Of a closed phase, read only its Goal, Decisions and Recap, found with `grep -n '^## ' <phase file>`: its open tasks and checks are already in `BACKLOG.md`. Every question about the code, other repositories or web pages goes to the `retriever` agent. Ask independent questions in parallel.
+   - A claim about the code that you put to the user, in prose or in an option, needs a retriever's citation behind it. A claim that something is missing, such as "X has no tests", needs a retriever that searched for it.
+   - Three to seven tasks, each with a "Done when" and the files it likely touches.
+   - Go through every entry in `BACKLOG.md` with the user: it becomes a task in this phase, stays for later, or is dropped. For a `- Check` entry, ask whether it has passed, and offer a task that fixes it if it failed. An entry leaves the file only on the user's yes.
+   - A task costs two fresh contexts, a coder's and a reviewer's, so fold a task that only checks something into the task before it. Slow first-time setup, such as downloading a toolchain, goes to the user, not a task.
+   - Propose a milestone command that proves each clause of the Goal, from the repository's own checks (Taskfile, Makefile, package scripts, CI) where they fit. A check it cannot run, such as one on a live host or a clause only a person can judge, goes under `After deploying`.
+4. Write it with status `draft`, add its unchecked line to `PLAN.md`, and show it to the user. Run the milestone once, as `/foreman:close` does, to learn whether it can run in this session. It may fail because the phase is not built yet. What matters is whether the environment, such as a sandbox or a missing service, stops it. If it does, tell the user: they can fix the environment, or accept that tasks needing it will stop as unverified. Record the choice under Decisions.
+5. Revise it with the user until they approve. With `Commits: foreman`, the phase needs its own branch. On the repository's default branch, create it with `git switch -c <name>`, named by the repository's convention. On another branch, ask whether the phase belongs there. If not, ask the user to check out the branch it should start from and run `/foreman:plan` again, and stop. Then set the status to `approved` and commit the plan files as the skill's Commits section says, so the approved phase is in git before its first task. Do not start any task.

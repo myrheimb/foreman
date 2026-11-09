@@ -1,0 +1,11 @@
+{
+  "name": "foreman",
+  "version": "1.0.0",
+  "description": "A Claude Code plugin that makes Claude work like a disciplined contractor. You approve each phase, and fresh agents build and review every task.",
+  "author": {
+    "name": "Bjørnar Myrheim"
+  },
+  "homepage": "https://github.com/myrheimb/foreman",
+  "repository": "https://github.com/myrheimb/foreman",
+  "license": "MIT"
+}

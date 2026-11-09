@@ -1,0 +1,14 @@
+{
+  "name": "foreman",
+  "description": "The foreman plugin for Claude Code.",
+  "owner": {
+    "name": "Bjørnar Myrheim"
+  },
+  "plugins": [
+    {
+      "name": "foreman",
+      "source": "./",
+      "description": "A Claude Code plugin that makes Claude work like a disciplined contractor. You approve each phase, and fresh agents build and review every task."
+    }
+  ]
+}
