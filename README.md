@@ -52,6 +52,14 @@ Only Markdown skills, commands and agents. There are no hooks or scripts, so the
 
 The reviewer and retriever agents don't have edit privileges and are instructed never to use their bash access to change your files.
 
+## Privacy
+
+Foreman does not collect, store, or share any data. It has no telemetry, servers or accounts, and its author receives nothing from your use of it.
+
+The plugin is Markdown instructions that run inside Claude Code. Your prompts and the code Claude and Foreman's agents read are handled by Claude Code and your model provider under their own terms, as in any session.
+
+Plan files stay in `docs/plan/` in your repository until you delete them. They are only shared if you push them, and Foreman never pushes.
+
 ## License
 
 MIT, see [LICENSE](LICENSE).
